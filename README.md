@@ -7,17 +7,23 @@ Automatically resolve any subdomain to the IP encoded in that subdomain. Note th
 Examples:
 
 ```
-dig test-127-0-0-1.yourdomain.com @127.0.0.1
-test-127-0-0-1.yourdomain.com 60 IN A 127.0.0.1
+dig test-127-0-0-1.yourdomain.com @127.0.0.1 +short
+127.0.0.1
 
-dig test-127-0-0-1-with-suffix.yourdomain.com @127.0.0.1
-test-127-0-0-1-with-suffix.yourdomain.com 60 IN A 127.0.0.1
+dig test-127-0-0-1-with-suffix.yourdomain.com @127.0.0.1 +short
+127.0.0.1
 
-dig www.crazy-long-mix.test.192.168.0.1.yourdomain.com @127.0.0.1
-www.crazy-long-mix.test.192.168.0.1.yourdomain.com. 60 IN A 192.168.0.1
+dig www.crazy-long-mix.test.192.168.0.1.yourdomain.com @127.0.0.1 +short
+192.168.0.1
 
-dig -t AAAA 1a01-4f8-c17-b8f--2.yourdomain.com @127.0.0.1
-1a01-4f8-c17-b8f--2.yourdomain.com 60 IN AAAA 1a01:4f8:c17:b8f::2
+dig -t AAAA 1a01-4f8-c17-b8f--2.yourdomain.com @127.0.0.1 +short
+1a01:4f8:c17:b8f::2
+
+dig -t TXT version.yourdomain.com @127.0.0.1 +short
+Node DNS v1.0.0
+
+dig -t TXT whoami.yourdomain.com @127.0.0.1 +short
+Your IP is your_public_ip
 ```
 
 ### Run nDNS via Docker (recommended)
