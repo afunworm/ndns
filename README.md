@@ -31,6 +31,11 @@ services:
         restart: unless-stopped
         ports:
             - '53:53/udp'
+        environment:
+            - ROOT_DOMAIN=yourdomain.com
+            - PORT=53
+            - HOST=0.0.0.0
+            - TTL=60
         tty: true
         stdin_open: true
 ```
